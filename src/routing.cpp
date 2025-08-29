@@ -1,6 +1,6 @@
-#include "routing.hpp"
-#include "globals.hpp"
-#include "http.hpp"
+#include "routing.h"
+#include "globals.h"
+#include "http.h"
 #include <sstream>
 
 static RouteMap ROUTES;

@@ -1,4 +1,4 @@
-#include "globals.hpp"
+#include "globals.h"
 
 // Global state definitions
 std::atomic<int> request_counter{0};

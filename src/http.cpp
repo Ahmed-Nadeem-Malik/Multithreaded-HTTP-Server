@@ -1,7 +1,7 @@
-#include "http.hpp"
-#include "config.hpp"
-#include "routing.hpp"
-#include "globals.hpp"
+#include "http.h"
+#include "config.h"
+#include "routing.h"
+#include "globals.h"
 #include <fstream>
 #include <sstream>
 #include <chrono>

@@ -13,7 +13,7 @@ else()
 endif()
 
 # Include directories
-include_directories(src)
+include_directories(include)
 
 # Source files
 set(SOURCES
@@ -27,12 +27,12 @@ set(SOURCES
 
 # Header files (for IDE support)
 set(HEADERS
-    src/config.hpp
-    src/http.hpp
-    src/routing.hpp
-    src/threadpool.hpp
-    src/server.hpp
-    src/globals.hpp
+    include/config.h
+    include/http.h
+    include/routing.h
+    include/threadpool.h
+    include/server.h
+    include/globals.h
 )
 
 # Create executable

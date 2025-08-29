@@ -1,36 +1,36 @@
-# 🚀 High-Performance Multithreaded HTTP Server
+# MultithreadedServer
 
-A production-ready, multithreaded HTTP server built from scratch in C++ demonstrating advanced systems programming, concurrent design patterns, and network optimization techniques.
+A high-performance HTTP server built from scratch in C++ with multithreading support. This project demonstrates systems programming concepts, concurrent design patterns, and network programming.
 
-## ⚡ Performance Highlights
+## Performance
 
-**Benchmark Results (ApacheBench - 20,000 requests, 200 concurrent)**
-- **39,039 requests/second** - Exceptional throughput
-- **0.026ms average response time** (across all concurrent requests)
-- **Zero failed requests** - 100% reliability
-- **18.4 MB/sec transfer rate** - Efficient data handling
-- **Sub-millisecond latency** - 99% of requests served in <5ms
+I benchmarked the server using ApacheBench with 20,000 requests and 200 concurrent connections:
 
-## 🛠️ Technical Excellence
+- **39,039 requests/second** - High throughput under load
+- **0.026ms average response time** per concurrent request
+- **Zero failed requests** - Reliable under stress
+- **18.4 MB/sec transfer rate**
+- **Sub-millisecond latency** - 99% of requests completed in under 5ms
+
+## What I Built
 
 ### Core Technologies
-- **Language**: Modern C++11 with STL containers and smart memory management
-- **Concurrency**: `std::thread`, `std::mutex`, `std::condition_variable`, `std::atomic`
-- **Networking**: Low-level POSIX Berkeley sockets for maximum performance
-- **Architecture**: Custom thread pool with work-stealing queue pattern
-- **Build System**: CMake for cross-platform compatibility
+- **C++11** with STL containers and modern language features
+- **POSIX sockets** for low-level network programming
+- **Custom thread pool** with synchronized task queues
+- **CMake build system** for cross-platform compilation
 
-### Advanced Features Implemented
-- **Modular Architecture**: Professional separation of concerns with header/implementation files
-- **Custom Thread Pool**: Production-grade worker thread management with synchronized task queues
-- **Dynamic Routing System**: Flexible route registration with lambda-based handlers
-- **HTTP/1.1 Protocol**: Complete implementation with proper status codes and MIME types
-- **Real-time Metrics**: Built-in performance monitoring and server statistics
-- **Thread-safe Operations**: Atomic request counting and mutex-protected logging
-- **Professional Build System**: CMake configuration with optimization flags
-- **Zero External Dependencies**: Built entirely with standard C++ libraries
+### Key Features
+- **Modular architecture** - Clean separation of headers and implementation
+- **Thread pool implementation** - Efficient concurrent request handling
+- **Dynamic routing system** - Easy to add new endpoints
+- **HTTP/1.1 support** - Proper status codes and MIME type handling
+- **Built-in metrics** - Real-time performance monitoring
+- **Thread-safe operations** - Atomic counters and mutex-protected logging
 
-## 🏗️ System Architecture
+## System Architecture
+
+The server uses a producer-consumer pattern where the main thread accepts connections and worker threads process requests:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -40,158 +40,117 @@ A production-ready, multithreaded HTTP server built from scratch in C++ demonstr
 │                 │                 │                             │
 │ • POSIX Sockets │ • 14 Workers    │ • Dynamic Route Registration│
 │ • IPv4/TCP      │ • Work Queue    │ • Lambda-based Handlers     │
-│ • Non-blocking  │ • Condition Vars│ • Static & Dynamic Content  │
+│ • Accept Loop   │ • Condition Vars│ • Static & Dynamic Content  │
 └─────────────────┴─────────────────┴─────────────────────────────┘
 ```
 
-## 🎯 Key Features
+## API Endpoints
 
-### Performance & Scalability
-- **Thread Pool Architecture**: 14 worker threads handling concurrent connections
-- **Lock-free Request Counting**: Atomic operations for high-performance metrics
-- **Memory Efficient**: Fixed buffer allocation with proper resource cleanup
-- **Connection Multiplexing**: Handle hundreds of concurrent connections
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/` | Main page |
+| `GET` | `/hello` | Demo page |
+| `GET` | `/time` | Current server time |
+| `GET` | `/metrics` | Server performance stats |
+| `GET` | `/css/style.css` | Stylesheet |
+| `GET` | `/js/script.js` | JavaScript file |
+| `POST` | `/echo` | Echo request body |
 
-### HTTP Implementation
-- **Method Support**: GET, POST with extensible architecture
-- **MIME Type Handling**: Automatic content-type detection for static files
-- **Status Code Management**: Proper HTTP status responses (200, 404, 405, etc.)
-- **Request Body Parsing**: Full HTTP request parsing with body extraction
+## Project Structure
 
-### Developer Experience
-- **Clean Codebase**: Comprehensive documentation and modular architecture
-- **Configurable**: Easy-to-modify configuration constants
-- **Extensible Routing**: Simple route registration system
-- **Built-in Monitoring**: Real-time metrics endpoint
-
-## 🚀 API Endpoints
-
-| Method | Endpoint | Description | Response Type |
-|--------|----------|-------------|---------------|
-| `GET` | `/` | Main application page | `text/html` |
-| `GET` | `/hello` | Demo page | `text/html` |
-| `GET` | `/time` | Current server time | `text/plain` |
-| `GET` | `/metrics` | Server performance stats | `text/plain` |
-| `GET` | `/css/style.css` | Stylesheet | `text/css` |
-| `GET` | `/js/script.js` | JavaScript | `application/javascript` |
-| `POST` | `/echo` | Echo request body | `text/plain` |
-
-## 📊 Benchmark Analysis
+I organized the code using standard C++ conventions:
 
 ```
-Server Performance Metrics:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Requests per Second:    39,039.47 [#/sec]
-Time per Request:       5.123 [ms] (mean)
-Concurrent Response:    0.026 [ms] (mean across 200 concurrent)
-Transfer Rate:          18,376.00 [Kbytes/sec]
-Success Rate:           100% (0 failed requests)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Response Time Distribution:
-  50%  ≤ 0ms    95%  ≤ 0ms    99%  ≤ 5ms    100% ≤ 8ms
+MultithreadedServer/
+├── include/              # Header files - Interface definitions
+│   ├── config.h          # Server configuration constants
+│   ├── globals.h         # Global state declarations
+│   ├── http.h            # HTTP protocol handling
+│   ├── routing.h         # Dynamic routing system
+│   ├── server.h          # Network socket management
+│   └── threadpool.h      # Thread pool implementation
+├── src/                  # Source files - Implementation
+│   ├── main.cpp          # Application entry point
+│   ├── globals.cpp       # Global state definitions
+│   ├── http.cpp          # HTTP utilities and request handling
+│   ├── routing.cpp       # Route registration and dispatching
+│   ├── server.cpp        # Socket setup and client handling
+│   └── threadpool.cpp    # Worker thread management
+├── static/               # Web content
+│   ├── index.html        # Landing page
+│   ├── hello.html        # Demo page
+│   ├── css/style.css     # Styles
+│   └── js/script.js      # Client-side code
+└── CMakeLists.txt        # Build configuration
 ```
 
-## 🛠️ Quick Start
+This structure separates interface definitions (headers) from implementation (source files), making the code easier to maintain and navigate.
+
+## Building and Running
 
 ### Prerequisites
-- **Compiler**: GCC 7+ or Clang 5+ (C++11 support)
-- **Platform**: Linux, macOS, or Unix-like system
-- **Build Tool**: CMake 3.10+ (recommended)
+- C++11 compatible compiler (GCC 7+, Clang 5+)
+- CMake 3.16 or higher
+- Unix-like system (Linux, macOS)
 
-### Build & Run
+### Quick Start
 ```bash
-# Clone and build
-git clone <repository-url>
+git clone <your-repo-url>
 cd MultithreadedServer
 
-# CMake build (recommended)
 mkdir build && cd build
-cmake .. && make
+cmake ..
+make
 
-# Run server
 ./MultithreadedServer
 ```
 
-### Test Performance
+The server starts on port 8080. Visit `http://localhost:8080` in your browser.
+
+### Testing Performance
 ```bash
-# Basic functionality test
+# Basic functionality
 curl http://localhost:8080/
 
-# Performance benchmark
+# Load testing with ApacheBench
 ab -n 20000 -c 200 http://localhost:8080/
 
-# Metrics monitoring
+# Check server metrics
 curl http://localhost:8080/metrics
 ```
 
-## 📁 Modular Architecture
+## Configuration
 
-### Professional File Organization
-```
-MultithreadedServer/
-├── src/
-│   ├── main.cpp          # Application entry point and orchestration
-│   ├── config.hpp        # Configuration constants and settings
-│   ├── http.hpp/.cpp     # HTTP protocol handling and utilities
-│   ├── routing.hpp/.cpp  # Dynamic routing system and handlers
-│   ├── threadpool.hpp/.cpp # Thread pool implementation
-│   └── server.hpp/.cpp   # Network setup and client handling
-├── static/               # Static web content
-│   ├── index.html        # Main application page
-│   ├── hello.html        # Demo page
-│   ├── css/style.css     # Stylesheet
-│   └── js/script.js      # Client-side JavaScript
-├── build/                # CMake build directory
-├── CMakeLists.txt        # Professional build configuration
-└── README.md             # Comprehensive documentation
-```
+Server settings are centralized in `include/config.h`:
 
-### Component Responsibilities
-- **🔧 config.hpp**: Centralized configuration management
-- **🌐 http.hpp/.cpp**: HTTP protocol implementation and file utilities
-- **🛣️ routing.hpp/.cpp**: Dynamic route registration and request routing
-- **🧵 threadpool.hpp/.cpp**: Concurrent request processing with worker threads
-- **🖥️ server.hpp/.cpp**: Network socket management and client handling
-- **🚀 main.cpp**: Application bootstrap and component orchestration
-
-## 🔧 Configuration
-
-Easily customize server behavior:
 ```cpp
 namespace Config {
-    constexpr const char* PORT = \"8080\";           // Server port
-    constexpr int THREADS_NUM = 14;                  // Thread pool size
-    constexpr int BUFFER_SIZE = 256;                 // Request buffer
-    constexpr int BACKLOG = 10;                      // Connection queue
+    constexpr const char* PORT = "8080";           // Server port
+    constexpr int THREADS_NUM = 14;                // Worker threads
+    constexpr int BUFFER_SIZE = 256;               // Request buffer
+    constexpr int BACKLOG = 10;                    // Connection queue
 }
 ```
 
-## 🎯 Technical Highlights for Recruiters
+## What I Learned
 
-### Systems Programming Skills
-- **Low-level Network Programming**: Direct use of Berkeley sockets API
-- **Memory Management**: Efficient resource handling without memory leaks
-- **Concurrent Programming**: Thread synchronization and atomic operations
-- **Performance Optimization**: Sub-millisecond response times
+Building this server taught me about:
 
-### Software Engineering Practices
-- **Modular Design**: Professional file organization with header/implementation separation
-- **Clean Architecture**: Clear separation of concerns across components
-- **Comprehensive Documentation**: Well-documented code with appropriate commenting
-- **Error Handling**: Robust error management and graceful degradation
-- **Professional Build System**: CMake with proper dependency management
-- **Performance Testing**: Benchmarked with industry-standard tools (ApacheBench)
+- **Low-level network programming** - Working directly with POSIX sockets
+- **Concurrent programming** - Thread synchronization and atomic operations
+- **Systems design** - Balancing performance with code maintainability
+- **C++ best practices** - Modern language features and project organization
+- **Performance optimization** - Achieving high throughput with efficient resource usage
 
-### Modern C++ Features
-- **STL Containers**: `unordered_map`, `vector`, `queue` for efficient data structures
-- **Lambda Functions**: Functional programming for route handlers
-- **Smart Pointers**: RAII principles for automatic resource management
-- **Template Metaprogramming**: Type-safe generic programming
+## Technical Highlights
+
+- **Zero external dependencies** - Built entirely with standard C++ and POSIX APIs
+- **Memory efficient** - Fixed buffer allocation with proper cleanup
+- **Production patterns** - Thread pool, proper error handling, graceful shutdown
+- **Extensible design** - Easy to add new routes and features
+- **Industry-standard structure** - Professional C++ project organization
 
 ---
 
-## 👨‍💻 Author
-
-**Ahmed Nadeem Malik**
-
+**Ahmed Nadeem Malik**  
+*Systems Programming • C++ • Network Development*

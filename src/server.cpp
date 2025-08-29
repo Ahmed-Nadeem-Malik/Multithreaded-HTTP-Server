@@ -1,4 +1,4 @@
-#include "server.hpp"
+#include "server.h"
 
 #include <arpa/inet.h>
 #include <netdb.h>
@@ -12,9 +12,9 @@
 #include <mutex>
 #include <stdexcept>
 
-#include "config.hpp"
-#include "http.hpp"
-#include "globals.hpp"
+#include "config.h"
+#include "http.h"
+#include "globals.h"
 
 int setup_server_socket()
 {
