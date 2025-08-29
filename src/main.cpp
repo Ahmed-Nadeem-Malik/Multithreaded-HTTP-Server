@@ -15,6 +15,7 @@
 #include <sstream>
 #include <stdexcept>
 #include <string>
+#include <thread>
 #include <vector>
 
 // Constants
@@ -208,7 +209,8 @@ int main()
                 continue;
             }
 
-            handle_client(client_fd);
+            std::thread client_thread(handle_client, client_fd);
+            client_thread.detach();
         }
 
         close(server_fd);
