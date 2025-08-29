@@ -195,4 +195,3 @@ namespace Config {
 
 **Ahmed Nadeem Malik**
 
-*Demonstrating expertise in systems programming, concurrent design, and high-performance server development*
