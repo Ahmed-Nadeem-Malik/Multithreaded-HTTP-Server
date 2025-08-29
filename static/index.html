@@ -2,18 +2,41 @@
 <html>
 
 <head>
-    <title>My HTTP Server</title>
+    <title>MultithreadedServer</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
-    <h1>Welcome to My Server</h1>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/hello">Hello</a>
-        <a href="/time">Time</a>
-    </nav>
-    <p>This is served from a real HTML file!</p>
+    <div class="container">
+        <h1>MultithreadedServer</h1>
+        <p>High-performance C++ HTTP server with thread pool</p>
+        
+        <nav>
+            <a href="/">Home</a>
+            <a href="/hello">Hello</a>
+            <a href="/time">Current Time</a>
+            <a href="/metrics">Server Stats</a>
+        </nav>
+
+        <div class="content">
+            <h2>Available Endpoints</h2>
+            <ul>
+                <li><strong>GET /</strong> - This homepage</li>
+                <li><strong>GET /hello</strong> - Demo page</li>
+                <li><strong>GET /time</strong> - Current server time</li>
+                <li><strong>GET /metrics</strong> - Performance metrics</li>
+                <li><strong>POST /echo</strong> - Echo request body</li>
+            </ul>
+            
+            <div class="demo-section">
+                <h3>Try the Echo Endpoint</h3>
+                <textarea id="echoInput" placeholder="Type something to echo..."></textarea>
+                <button onclick="testEcho()">Send to /echo</button>
+                <div id="echoResult"></div>
+            </div>
+        </div>
+    </div>
+    
     <script src="/js/script.js"></script>
 </body>
 

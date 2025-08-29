@@ -24,9 +24,11 @@ I benchmarked the server using ApacheBench with 20,000 requests and 200 concurre
 - **Modular architecture** - Clean separation of headers and implementation
 - **Thread pool implementation** - Efficient concurrent request handling
 - **Dynamic routing system** - Easy to add new endpoints
-- **HTTP/1.1 support** - Proper status codes and MIME type handling
+- **Complete HTTP/1.1 support** - Proper request parsing with Content-Length handling
+- **Robust request handling** - Multi-packet request assembly for reliable GET/POST support
 - **Built-in metrics** - Real-time performance monitoring
 - **Thread-safe operations** - Atomic counters and mutex-protected logging
+- **Interactive web interface** - Test all endpoints directly from the browser
 
 ## System Architecture
 
@@ -127,7 +129,7 @@ Server settings are centralized in `include/config.h`:
 namespace Config {
     constexpr const char* PORT = "8080";           // Server port
     constexpr int THREADS_NUM = 14;                // Worker threads
-    constexpr int BUFFER_SIZE = 256;               // Request buffer
+    constexpr int BUFFER_SIZE = 2048;              // Request buffer (2KB for POST support)
     constexpr int BACKLOG = 10;                    // Connection queue
 }
 ```
@@ -136,19 +138,23 @@ namespace Config {
 
 Building this server taught me about:
 
-- **Low-level network programming** - Working directly with POSIX sockets
+- **Low-level network programming** - Working directly with POSIX sockets and handling TCP packet boundaries
+- **HTTP protocol implementation** - Parsing headers, handling Content-Length, and managing request/response cycles
 - **Concurrent programming** - Thread synchronization and atomic operations
+- **Network reliability** - Dealing with partial reads and multi-packet requests
 - **Systems design** - Balancing performance with code maintainability
-- **C++ best practices** - Modern language features and project organization
+- **C++ best practices** - Modern language features and professional project organization
 - **Performance optimization** - Achieving high throughput with efficient resource usage
 
 ## Technical Highlights
 
 - **Zero external dependencies** - Built entirely with standard C++ and POSIX APIs
-- **Memory efficient** - Fixed buffer allocation with proper cleanup
-- **Production patterns** - Thread pool, proper error handling, graceful shutdown
-- **Extensible design** - Easy to add new routes and features
-- **Industry-standard structure** - Professional C++ project organization
+- **Robust HTTP handling** - Proper multi-packet request assembly and Content-Length parsing
+- **Memory efficient** - 2KB buffer allocation with proper cleanup and boundary handling
+- **Production patterns** - Thread pool, comprehensive error handling, graceful shutdown
+- **Extensible design** - Easy to add new routes and features through lambda-based handlers
+- **Interactive testing** - Built-in web interface for testing all endpoints
+- **Industry-standard structure** - Professional C++ project organization with header/source separation
 
 ---
 

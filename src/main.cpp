@@ -11,11 +11,11 @@
 #include <iostream>
 #include <mutex>
 
-#include "config.h"
-#include "routing.h"
-#include "server.h"
-#include "threadpool.h"
-#include "globals.h"
+#include "../include/config.h"
+#include "../include/globals.h"
+#include "../include/routing.h"
+#include "../include/server.h"
+#include "../include/threadpool.h"
 
 int main()
 {

@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/ahmed/Coding/BigProjects/MultithreadedServer/src
+CXX_INCLUDES = 
 
 CXX_FLAGSarm64 =  -O3 -DNDEBUG -std=c++11 -arch arm64
 

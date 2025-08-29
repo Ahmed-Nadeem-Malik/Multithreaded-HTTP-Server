@@ -1,6 +1,6 @@
 CMakeFiles/MultithreadedServer.dir/src/globals.cpp.o: \
   /Users/ahmed/Coding/BigProjects/MultithreadedServer/src/globals.cpp \
-  /Users/ahmed/Coding/BigProjects/MultithreadedServer/src/globals.hpp \
+  /Users/ahmed/Coding/BigProjects/MultithreadedServer/src/../include/globals.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/atomic \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__config \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__config_site \

@@ -1,6 +1,6 @@
 CMakeFiles/MultithreadedServer.dir/src/server.cpp.o: \
   /Users/ahmed/Coding/BigProjects/MultithreadedServer/src/server.cpp \
-  /Users/ahmed/Coding/BigProjects/MultithreadedServer/src/server.hpp \
+  /Users/ahmed/Coding/BigProjects/MultithreadedServer/src/../include/server.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/arpa/inet.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_bounds.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h \
@@ -800,9 +800,9 @@ CMakeFiles/MultithreadedServer.dir/src/server.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/stack \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/stack.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/print \
-  /Users/ahmed/Coding/BigProjects/MultithreadedServer/src/config.hpp \
-  /Users/ahmed/Coding/BigProjects/MultithreadedServer/src/http.hpp \
-  /Users/ahmed/Coding/BigProjects/MultithreadedServer/src/globals.hpp \
+  /Users/ahmed/Coding/BigProjects/MultithreadedServer/src/../include/config.h \
+  /Users/ahmed/Coding/BigProjects/MultithreadedServer/src/../include/http.h \
+  /Users/ahmed/Coding/BigProjects/MultithreadedServer/src/../include/globals.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/chrono \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/file_clock.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/forward_list

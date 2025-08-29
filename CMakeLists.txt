@@ -12,8 +12,7 @@ else()
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -DNDEBUG")
 endif()
 
-# Include directories
-include_directories(include)
+# Using relative paths in source files, no need for include_directories
 
 # Source files
 set(SOURCES

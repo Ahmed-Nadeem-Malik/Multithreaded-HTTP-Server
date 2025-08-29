@@ -1,6 +1,6 @@
-#include "threadpool.h"
+#include "../include/threadpool.h"
 
-#include "server.h"
+#include "../include/server.h"
 
 void ThreadPool::worker()
 {
