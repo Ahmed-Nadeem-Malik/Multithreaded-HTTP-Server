@@ -86,17 +86,97 @@ CMakeFiles/MultithreadedServer.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MultithreadedServer.dir/src/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ahmed/Coding/BigProjects/MultithreadedServer/src/main.cpp -o CMakeFiles/MultithreadedServer.dir/src/main.cpp.s
 
+CMakeFiles/MultithreadedServer.dir/src/http.cpp.o: CMakeFiles/MultithreadedServer.dir/flags.make
+CMakeFiles/MultithreadedServer.dir/src/http.cpp.o: /Users/ahmed/Coding/BigProjects/MultithreadedServer/src/http.cpp
+CMakeFiles/MultithreadedServer.dir/src/http.cpp.o: CMakeFiles/MultithreadedServer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ahmed/Coding/BigProjects/MultithreadedServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/MultithreadedServer.dir/src/http.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MultithreadedServer.dir/src/http.cpp.o -MF CMakeFiles/MultithreadedServer.dir/src/http.cpp.o.d -o CMakeFiles/MultithreadedServer.dir/src/http.cpp.o -c /Users/ahmed/Coding/BigProjects/MultithreadedServer/src/http.cpp
+
+CMakeFiles/MultithreadedServer.dir/src/http.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MultithreadedServer.dir/src/http.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ahmed/Coding/BigProjects/MultithreadedServer/src/http.cpp > CMakeFiles/MultithreadedServer.dir/src/http.cpp.i
+
+CMakeFiles/MultithreadedServer.dir/src/http.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MultithreadedServer.dir/src/http.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ahmed/Coding/BigProjects/MultithreadedServer/src/http.cpp -o CMakeFiles/MultithreadedServer.dir/src/http.cpp.s
+
+CMakeFiles/MultithreadedServer.dir/src/routing.cpp.o: CMakeFiles/MultithreadedServer.dir/flags.make
+CMakeFiles/MultithreadedServer.dir/src/routing.cpp.o: /Users/ahmed/Coding/BigProjects/MultithreadedServer/src/routing.cpp
+CMakeFiles/MultithreadedServer.dir/src/routing.cpp.o: CMakeFiles/MultithreadedServer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ahmed/Coding/BigProjects/MultithreadedServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/MultithreadedServer.dir/src/routing.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MultithreadedServer.dir/src/routing.cpp.o -MF CMakeFiles/MultithreadedServer.dir/src/routing.cpp.o.d -o CMakeFiles/MultithreadedServer.dir/src/routing.cpp.o -c /Users/ahmed/Coding/BigProjects/MultithreadedServer/src/routing.cpp
+
+CMakeFiles/MultithreadedServer.dir/src/routing.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MultithreadedServer.dir/src/routing.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ahmed/Coding/BigProjects/MultithreadedServer/src/routing.cpp > CMakeFiles/MultithreadedServer.dir/src/routing.cpp.i
+
+CMakeFiles/MultithreadedServer.dir/src/routing.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MultithreadedServer.dir/src/routing.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ahmed/Coding/BigProjects/MultithreadedServer/src/routing.cpp -o CMakeFiles/MultithreadedServer.dir/src/routing.cpp.s
+
+CMakeFiles/MultithreadedServer.dir/src/threadpool.cpp.o: CMakeFiles/MultithreadedServer.dir/flags.make
+CMakeFiles/MultithreadedServer.dir/src/threadpool.cpp.o: /Users/ahmed/Coding/BigProjects/MultithreadedServer/src/threadpool.cpp
+CMakeFiles/MultithreadedServer.dir/src/threadpool.cpp.o: CMakeFiles/MultithreadedServer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ahmed/Coding/BigProjects/MultithreadedServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/MultithreadedServer.dir/src/threadpool.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MultithreadedServer.dir/src/threadpool.cpp.o -MF CMakeFiles/MultithreadedServer.dir/src/threadpool.cpp.o.d -o CMakeFiles/MultithreadedServer.dir/src/threadpool.cpp.o -c /Users/ahmed/Coding/BigProjects/MultithreadedServer/src/threadpool.cpp
+
+CMakeFiles/MultithreadedServer.dir/src/threadpool.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MultithreadedServer.dir/src/threadpool.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ahmed/Coding/BigProjects/MultithreadedServer/src/threadpool.cpp > CMakeFiles/MultithreadedServer.dir/src/threadpool.cpp.i
+
+CMakeFiles/MultithreadedServer.dir/src/threadpool.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MultithreadedServer.dir/src/threadpool.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ahmed/Coding/BigProjects/MultithreadedServer/src/threadpool.cpp -o CMakeFiles/MultithreadedServer.dir/src/threadpool.cpp.s
+
+CMakeFiles/MultithreadedServer.dir/src/server.cpp.o: CMakeFiles/MultithreadedServer.dir/flags.make
+CMakeFiles/MultithreadedServer.dir/src/server.cpp.o: /Users/ahmed/Coding/BigProjects/MultithreadedServer/src/server.cpp
+CMakeFiles/MultithreadedServer.dir/src/server.cpp.o: CMakeFiles/MultithreadedServer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ahmed/Coding/BigProjects/MultithreadedServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/MultithreadedServer.dir/src/server.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MultithreadedServer.dir/src/server.cpp.o -MF CMakeFiles/MultithreadedServer.dir/src/server.cpp.o.d -o CMakeFiles/MultithreadedServer.dir/src/server.cpp.o -c /Users/ahmed/Coding/BigProjects/MultithreadedServer/src/server.cpp
+
+CMakeFiles/MultithreadedServer.dir/src/server.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MultithreadedServer.dir/src/server.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ahmed/Coding/BigProjects/MultithreadedServer/src/server.cpp > CMakeFiles/MultithreadedServer.dir/src/server.cpp.i
+
+CMakeFiles/MultithreadedServer.dir/src/server.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MultithreadedServer.dir/src/server.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ahmed/Coding/BigProjects/MultithreadedServer/src/server.cpp -o CMakeFiles/MultithreadedServer.dir/src/server.cpp.s
+
+CMakeFiles/MultithreadedServer.dir/src/globals.cpp.o: CMakeFiles/MultithreadedServer.dir/flags.make
+CMakeFiles/MultithreadedServer.dir/src/globals.cpp.o: /Users/ahmed/Coding/BigProjects/MultithreadedServer/src/globals.cpp
+CMakeFiles/MultithreadedServer.dir/src/globals.cpp.o: CMakeFiles/MultithreadedServer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ahmed/Coding/BigProjects/MultithreadedServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/MultithreadedServer.dir/src/globals.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MultithreadedServer.dir/src/globals.cpp.o -MF CMakeFiles/MultithreadedServer.dir/src/globals.cpp.o.d -o CMakeFiles/MultithreadedServer.dir/src/globals.cpp.o -c /Users/ahmed/Coding/BigProjects/MultithreadedServer/src/globals.cpp
+
+CMakeFiles/MultithreadedServer.dir/src/globals.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MultithreadedServer.dir/src/globals.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ahmed/Coding/BigProjects/MultithreadedServer/src/globals.cpp > CMakeFiles/MultithreadedServer.dir/src/globals.cpp.i
+
+CMakeFiles/MultithreadedServer.dir/src/globals.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MultithreadedServer.dir/src/globals.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ahmed/Coding/BigProjects/MultithreadedServer/src/globals.cpp -o CMakeFiles/MultithreadedServer.dir/src/globals.cpp.s
+
 # Object files for target MultithreadedServer
 MultithreadedServer_OBJECTS = \
-"CMakeFiles/MultithreadedServer.dir/src/main.cpp.o"
+"CMakeFiles/MultithreadedServer.dir/src/main.cpp.o" \
+"CMakeFiles/MultithreadedServer.dir/src/http.cpp.o" \
+"CMakeFiles/MultithreadedServer.dir/src/routing.cpp.o" \
+"CMakeFiles/MultithreadedServer.dir/src/threadpool.cpp.o" \
+"CMakeFiles/MultithreadedServer.dir/src/server.cpp.o" \
+"CMakeFiles/MultithreadedServer.dir/src/globals.cpp.o"
 
 # External object files for target MultithreadedServer
 MultithreadedServer_EXTERNAL_OBJECTS =
 
 MultithreadedServer: CMakeFiles/MultithreadedServer.dir/src/main.cpp.o
+MultithreadedServer: CMakeFiles/MultithreadedServer.dir/src/http.cpp.o
+MultithreadedServer: CMakeFiles/MultithreadedServer.dir/src/routing.cpp.o
+MultithreadedServer: CMakeFiles/MultithreadedServer.dir/src/threadpool.cpp.o
+MultithreadedServer: CMakeFiles/MultithreadedServer.dir/src/server.cpp.o
+MultithreadedServer: CMakeFiles/MultithreadedServer.dir/src/globals.cpp.o
 MultithreadedServer: CMakeFiles/MultithreadedServer.dir/build.make
 MultithreadedServer: CMakeFiles/MultithreadedServer.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/ahmed/Coding/BigProjects/MultithreadedServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable MultithreadedServer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/ahmed/Coding/BigProjects/MultithreadedServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable MultithreadedServer"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/MultithreadedServer.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

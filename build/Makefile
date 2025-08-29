@@ -129,6 +129,54 @@ MultithreadedServer/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MultithreadedServer.dir/build.make CMakeFiles/MultithreadedServer.dir/build
 .PHONY : MultithreadedServer/fast
 
+src/globals.o: src/globals.cpp.o
+.PHONY : src/globals.o
+
+# target to build an object file
+src/globals.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MultithreadedServer.dir/build.make CMakeFiles/MultithreadedServer.dir/src/globals.cpp.o
+.PHONY : src/globals.cpp.o
+
+src/globals.i: src/globals.cpp.i
+.PHONY : src/globals.i
+
+# target to preprocess a source file
+src/globals.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MultithreadedServer.dir/build.make CMakeFiles/MultithreadedServer.dir/src/globals.cpp.i
+.PHONY : src/globals.cpp.i
+
+src/globals.s: src/globals.cpp.s
+.PHONY : src/globals.s
+
+# target to generate assembly for a file
+src/globals.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MultithreadedServer.dir/build.make CMakeFiles/MultithreadedServer.dir/src/globals.cpp.s
+.PHONY : src/globals.cpp.s
+
+src/http.o: src/http.cpp.o
+.PHONY : src/http.o
+
+# target to build an object file
+src/http.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MultithreadedServer.dir/build.make CMakeFiles/MultithreadedServer.dir/src/http.cpp.o
+.PHONY : src/http.cpp.o
+
+src/http.i: src/http.cpp.i
+.PHONY : src/http.i
+
+# target to preprocess a source file
+src/http.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MultithreadedServer.dir/build.make CMakeFiles/MultithreadedServer.dir/src/http.cpp.i
+.PHONY : src/http.cpp.i
+
+src/http.s: src/http.cpp.s
+.PHONY : src/http.s
+
+# target to generate assembly for a file
+src/http.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MultithreadedServer.dir/build.make CMakeFiles/MultithreadedServer.dir/src/http.cpp.s
+.PHONY : src/http.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -153,6 +201,78 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MultithreadedServer.dir/build.make CMakeFiles/MultithreadedServer.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/routing.o: src/routing.cpp.o
+.PHONY : src/routing.o
+
+# target to build an object file
+src/routing.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MultithreadedServer.dir/build.make CMakeFiles/MultithreadedServer.dir/src/routing.cpp.o
+.PHONY : src/routing.cpp.o
+
+src/routing.i: src/routing.cpp.i
+.PHONY : src/routing.i
+
+# target to preprocess a source file
+src/routing.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MultithreadedServer.dir/build.make CMakeFiles/MultithreadedServer.dir/src/routing.cpp.i
+.PHONY : src/routing.cpp.i
+
+src/routing.s: src/routing.cpp.s
+.PHONY : src/routing.s
+
+# target to generate assembly for a file
+src/routing.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MultithreadedServer.dir/build.make CMakeFiles/MultithreadedServer.dir/src/routing.cpp.s
+.PHONY : src/routing.cpp.s
+
+src/server.o: src/server.cpp.o
+.PHONY : src/server.o
+
+# target to build an object file
+src/server.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MultithreadedServer.dir/build.make CMakeFiles/MultithreadedServer.dir/src/server.cpp.o
+.PHONY : src/server.cpp.o
+
+src/server.i: src/server.cpp.i
+.PHONY : src/server.i
+
+# target to preprocess a source file
+src/server.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MultithreadedServer.dir/build.make CMakeFiles/MultithreadedServer.dir/src/server.cpp.i
+.PHONY : src/server.cpp.i
+
+src/server.s: src/server.cpp.s
+.PHONY : src/server.s
+
+# target to generate assembly for a file
+src/server.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MultithreadedServer.dir/build.make CMakeFiles/MultithreadedServer.dir/src/server.cpp.s
+.PHONY : src/server.cpp.s
+
+src/threadpool.o: src/threadpool.cpp.o
+.PHONY : src/threadpool.o
+
+# target to build an object file
+src/threadpool.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MultithreadedServer.dir/build.make CMakeFiles/MultithreadedServer.dir/src/threadpool.cpp.o
+.PHONY : src/threadpool.cpp.o
+
+src/threadpool.i: src/threadpool.cpp.i
+.PHONY : src/threadpool.i
+
+# target to preprocess a source file
+src/threadpool.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MultithreadedServer.dir/build.make CMakeFiles/MultithreadedServer.dir/src/threadpool.cpp.i
+.PHONY : src/threadpool.cpp.i
+
+src/threadpool.s: src/threadpool.cpp.s
+.PHONY : src/threadpool.s
+
+# target to generate assembly for a file
+src/threadpool.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MultithreadedServer.dir/build.make CMakeFiles/MultithreadedServer.dir/src/threadpool.cpp.s
+.PHONY : src/threadpool.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -162,9 +282,24 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... MultithreadedServer"
+	@echo "... src/globals.o"
+	@echo "... src/globals.i"
+	@echo "... src/globals.s"
+	@echo "... src/http.o"
+	@echo "... src/http.i"
+	@echo "... src/http.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/routing.o"
+	@echo "... src/routing.i"
+	@echo "... src/routing.s"
+	@echo "... src/server.o"
+	@echo "... src/server.i"
+	@echo "... src/server.s"
+	@echo "... src/threadpool.o"
+	@echo "... src/threadpool.i"
+	@echo "... src/threadpool.s"
 .PHONY : help
 
 
