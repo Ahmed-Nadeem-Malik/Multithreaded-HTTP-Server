@@ -7,10 +7,8 @@
 #include <unistd.h>
 
 #include <iostream>
-#include <stdexcept>
 
 #include "../include/config.h"
-#include "../include/globals.h"
 #include "../include/routing.h"
 #include "../include/server.h"
 #include "../include/threadpool.h"

@@ -1,10 +1,7 @@
 #include "../include/server.h"
 
 #include <arpa/inet.h>
-#include <netdb.h>
-#include <netinet/in.h>
 #include <sys/socket.h>
-#include <sys/types.h>
 #include <unistd.h>
 
 #include <cstring>
@@ -20,9 +17,9 @@ int setup_server_socket()
 {
     struct addrinfo hints, *server_info;
     memset(&hints, 0, sizeof(hints));
-    hints.ai_family = AF_INET;
-    hints.ai_socktype = SOCK_STREAM;
-    hints.ai_flags = AI_PASSIVE;
+    hints.ai_family = AF_INET;        // IPV4
+    hints.ai_socktype = SOCK_STREAM;  // TCP
+    hints.ai_flags = AI_PASSIVE;      // Doesnt matter what ip
 
     int status = getaddrinfo(NULL, Config::PORT, &hints, &server_info);
     if (status != 0)
@@ -96,7 +93,7 @@ void handle_client(int client_fd)
             if (content_length_pos != std::string::npos)
             {
                 // Extract content length
-                size_t length_start = partial.find(":", content_length_pos) + 1;
+                size_t length_start = partial.find(":", content_length_pos) + 1;  // 1 after the colon
                 size_t length_end = partial.find("\r\n", length_start);
                 std::string length_str = partial.substr(length_start, length_end - length_start);
 
@@ -104,7 +101,7 @@ void handle_client(int client_fd)
                 length_str.erase(0, length_str.find_first_not_of(" \t"));
 
                 int content_length = std::stoi(length_str);
-                int expected_total = header_end + 4 + content_length;
+                int expected_total = header_end + 4 + content_length;  // 4 for the clrf(\r\n\r\n)
 
                 if (total_received >= expected_total)
                 {

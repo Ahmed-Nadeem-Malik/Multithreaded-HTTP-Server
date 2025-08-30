@@ -2379,7 +2379,6 @@ CMakeFiles/MultithreadedServer.dir/src/main.cpp.o: /Users/ahmed/Coding/BigProjec
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stddef.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stdint.h \
   /Users/ahmed/Coding/BigProjects/MultithreadedServer/include/config.h \
-  /Users/ahmed/Coding/BigProjects/MultithreadedServer/include/globals.h \
   /Users/ahmed/Coding/BigProjects/MultithreadedServer/include/routing.h \
   /Users/ahmed/Coding/BigProjects/MultithreadedServer/include/server.h \
   /Users/ahmed/Coding/BigProjects/MultithreadedServer/include/threadpool.h

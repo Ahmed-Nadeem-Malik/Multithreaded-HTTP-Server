@@ -1,7 +1,6 @@
 #include "../include/http.h"
 
 #include <chrono>
-#include <cstring>
 #include <fstream>
 #include <sstream>
 
