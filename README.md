@@ -105,23 +105,95 @@ This structure separates interface definitions (headers) from implementation (so
 ## Building and Running
 
 ### Prerequisites
-- C++11 compatible compiler (GCC 7+, Clang 5+)
-- CMake 3.16 or higher
-- Unix-like system (Linux, macOS)
+- **C++11 compatible compiler**:
+  - GCC 4.8+ (Linux)
+  - Clang 3.3+ (macOS/Linux) 
+  - MSVC 2015+ (Windows)
+- **CMake 3.16 or higher**
+- **Operating System**: Linux, macOS, or Windows
 
 ### Quick Start
 ```bash
 git clone <your-repo-url>
 cd MultithreadedServer
 
+# Create build directory
 mkdir build && cd build
-cmake ..
-make
 
-./MultithreadedServer
+# Configure with CMake (Release build by default)
+cmake ..
+
+# Build the project
+make  # or 'cmake --build .' on Windows
+
+# Run the server
+./MultithreadedServer  # or 'MultithreadedServer.exe' on Windows
+```
+
+### Build Options
+
+#### Debug Build
+```bash
+mkdir build-debug && cd build-debug
+cmake -DCMAKE_BUILD_TYPE=Debug ..
+make
+```
+Debug builds include:
+- Debug symbols for GDB/LLDB
+- Disabled optimizations (-O0)
+- Strict compiler warnings
+- Better error messages
+
+#### Release Build (Default)
+```bash
+mkdir build-release && cd build-release  
+cmake -DCMAKE_BUILD_TYPE=Release ..
+make
+```
+Release builds include:
+- Maximum optimization (-O3)
+- Stripped debug information
+- Production-ready performance
+
+#### Cross-Platform Building
+```bash
+# Linux/macOS (uses system pthread)
+cmake ..
+
+# Windows (uses native threading)
+cmake .. -G "Visual Studio 16 2019"
+cmake --build .
 ```
 
 The server starts on port 8080. Visit `http://localhost:8080` in your browser.
+
+### CMake Troubleshooting
+
+#### Common Build Issues
+```bash
+# Clean build directory if configuration changes
+rm -rf build/
+mkdir build && cd build
+cmake ..
+
+# Specify compiler explicitly
+cmake -DCMAKE_CXX_COMPILER=g++ ..
+cmake -DCMAKE_CXX_COMPILER=clang++ ..
+
+# Verbose build output for debugging
+make VERBOSE=1
+# or
+cmake --build . --verbose
+
+# Check CMake configuration
+cmake -L ..  # List cache variables
+cmake -LA .. # List all variables including advanced
+```
+
+#### Platform-Specific Notes
+- **Linux**: Automatically links pthread library
+- **macOS**: Uses system threading (no extra libraries)  
+- **Windows**: Requires MSVC or MinGW, uses native Win32 threads
 
 ### Testing Performance
 ```bash
@@ -130,6 +202,9 @@ curl http://localhost:8080/
 
 # Load testing with ApacheBench
 ab -n 20000 -c 200 http://localhost:8080/
+
+# Advanced testing with wrk
+wrk -t14 -c1000 -d60s http://localhost:8080/
 
 # Check server metrics
 curl http://localhost:8080/metrics
