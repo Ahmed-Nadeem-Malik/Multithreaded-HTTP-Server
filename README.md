@@ -165,7 +165,17 @@ cmake .. -G "Visual Studio 16 2019"
 cmake --build .
 ```
 
-The server starts on port 8080. Visit `http://localhost:8080` in your browser.
+## Running the Server
+
+```bash
+cd build
+./MultithreadedServer
+```
+
+Server starts on port 8080. Visit `http://localhost:8080` or test endpoints:
+- `/time` - Current time
+- `/metrics` - Performance stats  
+- `/echo` - POST endpoint
 
 ### CMake Troubleshooting
 
