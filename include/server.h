@@ -1,6 +1,6 @@
 /**
  * @file server.h
- * @brief Core server socket management and client handling functions
+ * @brief TCP server socket management and client handling
  */
 
 #pragma once

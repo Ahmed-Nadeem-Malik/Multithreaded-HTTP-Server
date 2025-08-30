@@ -16,7 +16,7 @@ std::string read_file_content(const std::string& file_path);
 
 /**
  * Creates complete HTTP/1.1 response with headers
- * @param status HTTP status line (e.g., "200 OK", "404 Not Found") 
+ * @param status HTTP status line (e.g., "200 OK", "404 Not Found")
  * @param content_type MIME type for Content-Type header
  * @param content Response body content
  * @return Complete HTTP response string
@@ -39,7 +39,7 @@ std::string create_file_response(const std::string& file_path, const std::string
 std::string get_current_time();
 
 /**
- * Main HTTP request processor - parses request, routes to handlers
+ * Main HTTP request processor that parses request and routes to handlers
  * @param request Raw HTTP request string
  * @return HTTP response based on routing
  */

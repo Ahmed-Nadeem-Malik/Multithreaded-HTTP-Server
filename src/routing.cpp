@@ -11,6 +11,7 @@
 #include "../include/globals.h"
 #include "../include/http.h"
 
+// Global route mapping: path -> method -> handler
 static RouteMap ROUTES;
 
 RouteMap& get_routes() { return ROUTES; }
@@ -28,19 +29,19 @@ Handler static_file(const std::string& file_path, const std::string& content_typ
 
 void init_routes()
 {
-    // Static file routes
+    // Static file routes - serve HTML, CSS, and JavaScript files
     add_route("/", "GET", static_file("../static/index.html", "text/html"));
     add_route("/hello", "GET", static_file("../static/hello.html", "text/html"));
     add_route("/css/style.css", "GET", static_file("../static/css/style.css", "text/css"));
     add_route("/js/script.js", "GET", static_file("../static/js/script.js", "application/javascript"));
 
-    // Current server time
+    // Dynamic API routes
     add_route("/time", "GET",
               [](const std::string&) { return create_http_response("200 OK", "text/plain", get_current_time()); });
 
-    // Performance metrics endpoint
+    // Performance metrics - matches Handler signature: std::string(const std::string& body)
     add_route("/metrics", "GET",
-              [](const std::string&)
+              [](const std::string&)  // body unused for GET requests
               {
                   // Calculate server uptime since startup
                   auto now = std::chrono::system_clock::now();
@@ -56,7 +57,7 @@ void init_routes()
                   return create_http_response("200 OK", "text/plain", os.str());
               });
 
-    // Echo POST data back to client
-    add_route("/echo", "POST", [](const std::string& body)
+    // Echo endpoint - matches Handler signature: std::string(const std::string& body)  
+    add_route("/echo", "POST", [](const std::string& body)  // uses body parameter
               { return create_http_response("200 OK", "text/plain", "You posted:\n" + body); });
 }

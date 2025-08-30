@@ -1,6 +1,6 @@
 /**
  * @file config.h
- * @brief Server configuration constants
+ * @brief Server configuration constants and settings
  */
 
 #pragma once
