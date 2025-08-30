@@ -19,17 +19,17 @@ Handler static_file(const std::string& file_path, const std::string& content_typ
 
 void init_routes()
 {
-    // Static files
+    // Static file routes
     add_route("/", "GET", static_file("../static/index.html", "text/html"));
     add_route("/hello", "GET", static_file("../static/hello.html", "text/html"));
     add_route("/css/style.css", "GET", static_file("../static/css/style.css", "text/css"));
     add_route("/js/script.js", "GET", static_file("../static/js/script.js", "application/javascript"));
 
-    // Dynamic content
+    // Current server time
     add_route("/time", "GET",
               [](const std::string&) { return create_http_response("200 OK", "text/plain", get_current_time()); });
 
-    // Server metrics
+    // Performance metrics endpoint
     add_route("/metrics", "GET",
               [](const std::string&)
               {
@@ -45,7 +45,7 @@ void init_routes()
                   return create_http_response("200 OK", "text/plain", os.str());
               });
 
-    // API endpoint
+    // Echo POST data back to client
     add_route("/echo", "POST", [](const std::string& body)
               { return create_http_response("200 OK", "text/plain", "You posted:\n" + body); });
 }

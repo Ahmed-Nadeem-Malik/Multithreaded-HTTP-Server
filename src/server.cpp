@@ -18,9 +18,9 @@ int setup_server_socket()
 {
     struct addrinfo hints, *server_info;
     memset(&hints, 0, sizeof(hints));
-    hints.ai_family = AF_INET;        // IPV4
-    hints.ai_socktype = SOCK_STREAM;  // TCP
-    hints.ai_flags = AI_PASSIVE;      // Doesnt matter what ip
+    hints.ai_family = AF_INET;        // IPv4 only
+    hints.ai_socktype = SOCK_STREAM;  // TCP connection
+    hints.ai_flags = AI_PASSIVE;      // Bind to any interface
 
     int status = getaddrinfo(NULL, Config::PORT, &hints, &server_info);
     if (status != 0)
@@ -65,7 +65,7 @@ void handle_client(int client_fd)
     std::string request;
     int total_received = 0;
 
-    // Read until we have headers + body
+    // Read HTTP request data in chunks until complete
     while (total_received < Config::BUFFER_SIZE - 1)
     {
         int bytes_received = recv(client_fd, buffer + total_received, Config::BUFFER_SIZE - 1 - total_received, 0);
@@ -83,36 +83,35 @@ void handle_client(int client_fd)
         total_received += bytes_received;
         buffer[total_received] = '\0';
 
-        // Check if we have complete HTTP request (headers + body)
+        // Look for end of HTTP headers (double CRLF)
         std::string partial(buffer, total_received);
         size_t header_end = partial.find("\r\n\r\n");
 
         if (header_end != std::string::npos)
         {
-            // Found end of headers, check if we need more data for body
+            // Headers complete, check if request has a body
             size_t content_length_pos = partial.find("Content-Length:");
             if (content_length_pos != std::string::npos)
             {
-                // Extract content length
-                size_t length_start = partial.find(":", content_length_pos) + 1;  // 1 after the colon
+                // Parse Content-Length header value
+                size_t length_start = partial.find(":", content_length_pos) + 1;
                 size_t length_end = partial.find("\r\n", length_start);
                 std::string length_str = partial.substr(length_start, length_end - length_start);
 
-                // Remove leading whitespace
+                // Strip whitespace from header value
                 length_str.erase(0, length_str.find_first_not_of(" \t"));
 
                 int content_length = std::stoi(length_str);
-                int expected_total = header_end + 4 + content_length;  // 4 for the clrf(\r\n\r\n)
+                int expected_total = header_end + 4 + content_length;  // headers + CRLFCRLF + body
 
                 if (total_received >= expected_total)
                 {
-                    // We have complete request
-                    break;
+                    break;  // Complete request received
                 }
             }
             else
             {
-                // No content-length, assume complete
+                // No body expected, request is complete
                 break;
             }
         }
