@@ -4,13 +4,27 @@ A high-performance HTTP server built from scratch in C++ with multithreading sup
 
 ## Performance
 
-I benchmarked the server using ApacheBench with 20,000 requests and 200 concurrent connections:
+I benchmarked the server using wrk with 14 threads, 1000 concurrent connections, and a 60-second test:
 
-- **39,039 requests/second** - High throughput under load
-- **0.026ms average response time** per concurrent request
-- **Zero failed requests** - Reliable under stress
-- **18.4 MB/sec transfer rate**
-- **Sub-millisecond latency** - 99% of requests completed in under 5ms
+```
+wrk -t14 -c1000 -d60s http://localhost:8080/
+
+Running 1m test @ http://localhost:8080/
+  14 threads and 1000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   178.90us    0.94ms 148.93ms   99.97%
+    Req/Sec     2.94k     2.13k   12.77k    62.18%
+  1730897 requests in 1.00m, 2.31GB read
+  Socket errors: connect 0, read 1730896, write 0, timeout 0
+Requests/sec:  28808.48
+Transfer/sec:     39.40MB
+```
+
+- **28,808 requests/second** - Exceptional throughput under extreme load
+- **178.90μs average latency** - Microsecond response times
+- **1.73 million total requests** in 60 seconds
+- **39.40 MB/sec transfer rate**
+- **99.97% sub-millisecond latency** - Consistently fast responses
 
 ## What I Built
 
