@@ -1,5 +1,7 @@
 #include "../include/globals.h"
 
+#include <chrono>
+
 // Global state definitions
 std::atomic<int> request_counter{0};
 std::mutex logging_mutex;

@@ -6,10 +6,8 @@
 #include <sys/socket.h>
 #include <unistd.h>
 
-#include <atomic>
-#include <chrono>
 #include <iostream>
-#include <mutex>
+#include <stdexcept>
 
 #include "../include/config.h"
 #include "../include/globals.h"

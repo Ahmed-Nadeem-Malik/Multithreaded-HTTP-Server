@@ -1,8 +1,8 @@
 #pragma once
 
 #include <atomic>
-#include <mutex>
 #include <chrono>
+#include <mutex>
 
 // Global state declarations
 extern std::atomic<int> request_counter;

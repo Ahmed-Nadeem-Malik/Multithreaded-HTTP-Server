@@ -13,8 +13,8 @@
 #include <stdexcept>
 
 #include "../include/config.h"
-#include "../include/http.h"
 #include "../include/globals.h"
+#include "../include/http.h"
 
 int setup_server_socket()
 {
@@ -66,53 +66,60 @@ void handle_client(int client_fd)
 
     std::string request;
     int total_received = 0;
-    
+
     // Read until we have headers + body
-    while (total_received < Config::BUFFER_SIZE - 1) {
-        int bytes_received = recv(client_fd, buffer + total_received, 
-                                Config::BUFFER_SIZE - 1 - total_received, 0);
-        
-        if (bytes_received <= 0) {
-            if (total_received == 0) {
+    while (total_received < Config::BUFFER_SIZE - 1)
+    {
+        int bytes_received = recv(client_fd, buffer + total_received, Config::BUFFER_SIZE - 1 - total_received, 0);
+
+        if (bytes_received <= 0)
+        {
+            if (total_received == 0)
+            {
                 std::lock_guard<std::mutex> lock(logging_mutex);
                 std::cout << "Client disconnected" << std::endl;
             }
             break;
         }
-        
+
         total_received += bytes_received;
         buffer[total_received] = '\0';
-        
+
         // Check if we have complete HTTP request (headers + body)
         std::string partial(buffer, total_received);
         size_t header_end = partial.find("\r\n\r\n");
-        
-        if (header_end != std::string::npos) {
+
+        if (header_end != std::string::npos)
+        {
             // Found end of headers, check if we need more data for body
             size_t content_length_pos = partial.find("Content-Length:");
-            if (content_length_pos != std::string::npos) {
+            if (content_length_pos != std::string::npos)
+            {
                 // Extract content length
                 size_t length_start = partial.find(":", content_length_pos) + 1;
                 size_t length_end = partial.find("\r\n", length_start);
                 std::string length_str = partial.substr(length_start, length_end - length_start);
-                
+
                 // Remove leading whitespace
                 length_str.erase(0, length_str.find_first_not_of(" \t"));
-                
+
                 int content_length = std::stoi(length_str);
                 int expected_total = header_end + 4 + content_length;
-                
-                if (total_received >= expected_total) {
+
+                if (total_received >= expected_total)
+                {
                     // We have complete request
                     break;
                 }
-            } else {
+            }
+            else
+            {
                 // No content-length, assume complete
                 break;
             }
         }
     }
-    
+
     request = std::string(buffer, total_received);
     std::string response = handle_http_request(request);
 
