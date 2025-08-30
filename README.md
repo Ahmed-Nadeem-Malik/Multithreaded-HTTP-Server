@@ -170,6 +170,4 @@ Building this server taught me about:
 - **Interactive testing** - Built-in web interface for testing all endpoints
 
 ---
-
-**Ahmed Nadeem Malik**  
-*Systems Programming • C++ • Network Development*
+*Systems Programming • C++ • Network Development • Concurrency*
