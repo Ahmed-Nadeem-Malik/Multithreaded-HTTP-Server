@@ -1,3 +1,0 @@
-/Users/ahmed/Coding/BigProjects/MultithreadedServer/build/CMakeFiles/MultithreadedServer.dir
-/Users/ahmed/Coding/BigProjects/MultithreadedServer/build/CMakeFiles/edit_cache.dir
-/Users/ahmed/Coding/BigProjects/MultithreadedServer/build/CMakeFiles/rebuild_cache.dir
