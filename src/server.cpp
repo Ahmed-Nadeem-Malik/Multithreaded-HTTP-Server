@@ -1,3 +1,8 @@
+/**
+ * @file server.cpp
+ * @brief TCP server socket management and client connection handling
+ */
+
 #include "../include/server.h"
 
 #include <arpa/inet.h>
@@ -88,35 +93,35 @@ void handle_client(int client_fd)
         total_received += bytes_received;
         buffer[total_received] = '\0';
 
-        // Look for end of HTTP headers (double CRLF)
+        // Look for end of HTTP headers (double CRLF indicates end of headers)
         std::string partial(buffer, total_received);
         size_t header_end = partial.find("\r\n\r\n");
 
         if (header_end != std::string::npos)
         {
-            // Headers complete, check if request has a body
+            // Headers complete, check if request has a body (POST/PUT requests)
             size_t content_length_pos = partial.find("Content-Length:");
             if (content_length_pos != std::string::npos)
             {
-                // Parse Content-Length header value
+                // Extract the Content-Length header value to know how much body to expect
                 size_t length_start = partial.find(":", content_length_pos) + 1;
                 size_t length_end = partial.find("\r\n", length_start);
                 std::string length_str = partial.substr(length_start, length_end - length_start);
 
-                // Strip whitespace from header value
+                // Remove leading/trailing whitespace from header value
                 length_str.erase(0, length_str.find_first_not_of(" \t"));
 
                 int content_length = std::stoi(length_str);
-                int expected_total = header_end + 4 + content_length;  // headers + CRLFCRLF + body
+                int expected_total = header_end + 4 + content_length;  // headers + "\r\n\r\n" + body
 
                 if (total_received >= expected_total)
                 {
-                    break;  // Complete request received
+                    break;  // Complete request with body received
                 }
             }
             else
             {
-                // No body expected, request is complete
+                // No Content-Length header, assume no body (typical for GET requests)
                 break;
             }
         }

@@ -1,6 +1,9 @@
-#pragma once
+/**
+ * @file config.h
+ * @brief Server configuration constants
+ */
 
-// Server configuration constants
+#pragma once
 namespace Config
 {
 constexpr const char* PORT = "8080";             // Server port

@@ -1,3 +1,8 @@
+/**
+ * @file http.cpp
+ * @brief HTTP protocol handling and response generation
+ */
+
 #include "../include/http.h"
 
 #include <chrono>
