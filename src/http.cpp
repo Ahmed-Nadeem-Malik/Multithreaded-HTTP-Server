@@ -49,13 +49,15 @@ std::string get_current_time()
 
 std::string handle_http_request(const std::string& request)
 {
+    // Increment global request counter
     ++request_counter;
 
+    // Parse HTTP request line (METHOD PATH VERSION)
     std::istringstream iss(request);
     std::string method, path, version;
     iss >> method >> path >> version;
 
-    // Extract body (after blank line)
+    // Extract request body (after double CRLF)
     std::string body;
     size_t sep = request.find("\r\n\r\n");
     if (sep != std::string::npos)
@@ -63,22 +65,26 @@ std::string handle_http_request(const std::string& request)
         body = request.substr(sep + 4);
     }
 
+    // Validate request has required components
     if (method.empty() || path.empty())
     {
         return create_http_response("400 Bad Request", "text/plain", "Bad Request");
     }
 
+    // Look up route handler for path
     auto route = get_routes().find(path);
     if (route == get_routes().end())
     {
         return create_http_response("404 Not Found", "text/plain", "Not Found");
     }
 
+    // Check if method is supported for this path
     auto handler = route->second.find(method);
     if (handler == route->second.end())
     {
         return create_http_response("405 Method Not Allowed", "text/plain", "Method Not Allowed");
     }
 
+    // Execute handler and return response
     return handler->second(body);
 }

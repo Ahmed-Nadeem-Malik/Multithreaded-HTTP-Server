@@ -6,6 +6,7 @@
 #include "../include/globals.h"
 #include "../include/http.h"
 
+// Global route storage
 static RouteMap ROUTES;
 
 RouteMap& get_routes() { return ROUTES; }

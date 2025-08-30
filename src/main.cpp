@@ -17,13 +17,17 @@ int main()
 {
     try
     {
+        // Initialize HTTP routes
         init_routes();
 
+        // Create and bind server socket
         int server_fd = setup_server_socket();
         std::cout << "Server listening on port " << Config::PORT << std::endl;
 
+        // Create thread pool for handling clients
         ThreadPool pool(Config::THREADS_NUM);
 
+        // Main server loop - accept and dispatch clients
         while (true)
         {
             struct sockaddr_storage client_addr;
@@ -36,6 +40,7 @@ int main()
                 continue;
             }
 
+            // Submit client to thread pool for processing
             pool.submit(client_fd);
         }
 

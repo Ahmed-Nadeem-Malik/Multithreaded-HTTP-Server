@@ -16,18 +16,21 @@
 
 int setup_server_socket()
 {
+    // Configure socket address hints
     struct addrinfo hints, *server_info;
     memset(&hints, 0, sizeof(hints));
     hints.ai_family = AF_INET;        // IPv4 only
     hints.ai_socktype = SOCK_STREAM;  // TCP connection
     hints.ai_flags = AI_PASSIVE;      // Bind to any interface
 
+    // Resolve server address and port
     int status = getaddrinfo(NULL, Config::PORT, &hints, &server_info);
     if (status != 0)
     {
         throw std::runtime_error("getaddrinfo failed: " + std::string(gai_strerror(status)));
     }
 
+    // Create socket file descriptor
     int server_fd = socket(server_info->ai_family, server_info->ai_socktype, server_info->ai_protocol);
     if (server_fd == -1)
     {
@@ -35,6 +38,7 @@ int setup_server_socket()
         throw std::runtime_error("Socket creation failed");
     }
 
+    // Bind socket to address and port
     if (bind(server_fd, server_info->ai_addr, server_info->ai_addrlen) == -1)
     {
         close(server_fd);
@@ -42,6 +46,7 @@ int setup_server_socket()
         throw std::runtime_error("Bind failed");
     }
 
+    // Start listening for connections
     if (listen(server_fd, Config::BACKLOG) == -1)
     {
         close(server_fd);
@@ -117,9 +122,11 @@ void handle_client(int client_fd)
         }
     }
 
+    // Process HTTP request and generate response
     request = std::string(buffer, total_received);
     std::string response = handle_http_request(request);
 
+    // Send response back to client
     int bytes_sent = send(client_fd, response.c_str(), response.length(), 0);
     if (bytes_sent == -1)
     {
@@ -127,6 +134,7 @@ void handle_client(int client_fd)
         std::cerr << "Send error" << std::endl;
     }
 
+    // Close client connection
     close(client_fd);
     {
         std::lock_guard<std::mutex> lock(logging_mutex);

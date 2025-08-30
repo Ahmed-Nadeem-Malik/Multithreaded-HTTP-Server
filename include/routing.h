@@ -4,7 +4,9 @@
 #include <string>
 #include <unordered_map>
 
+// HTTP request handler function type
 using Handler = std::function<std::string(const std::string& body)>;
+// Route mapping: path -> method -> handler
 using RouteMap = std::unordered_map<std::string, std::unordered_map<std::string, Handler>>;
 
 // Registers a route handler for given path and HTTP method
