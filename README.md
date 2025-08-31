@@ -95,6 +95,8 @@ MultithreadedServer/
 ├── static/               # Web content
 │   ├── index.html        # Landing page
 │   ├── hello.html        # Demo page
+│   ├── time.html         # Time page template
+│   ├── 404.html          # Error page template
 │   ├── css/style.css     # Styles
 │   └── js/script.js      # Client-side code
 └── CMakeLists.txt        # Build configuration
@@ -114,8 +116,8 @@ This structure separates interface definitions (headers) from implementation (so
 
 ### Quick Start
 ```bash
-git clone <your-repo-url>
-cd MultithreadedServer
+git clone https://github.com/Ahmed-Nadeem-Malik/Multithreaded-HTTP-Server.git
+cd Multithreaded-HTTP-Server
 
 # Create build directory
 mkdir build && cd build
@@ -247,7 +249,7 @@ Building this server taught me about:
 
 ## Technical Highlights
 
-- **Zero external dependencies** - Built entirely with standard C++ and POSIX APIs
+- **Minimal external dependencies** - Built with standard C++ and POSIX APIs only
 - **Robust HTTP handling** - Proper multi-packet request assembly and Content-Length parsing
 - **Memory efficient** - 2KB buffer allocation with proper cleanup and boundary handling
 - **Production patterns** - Thread pool, comprehensive error handling, graceful shutdown

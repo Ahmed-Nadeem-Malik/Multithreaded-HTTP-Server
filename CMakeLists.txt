@@ -4,7 +4,7 @@
 # 
 # A multithreaded HTTP server built in C++ with the following features:
 # - Thread pool for concurrent client handling  
-# - HTTP/1.1 protocol support with keep-alive
+# - HTTP/1.1 protocol support
 # - Static file serving with proper MIME types
 # - RESTful API endpoints (/time, /metrics, /echo)
 # - Configurable server settings
