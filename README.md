@@ -95,8 +95,6 @@ MultithreadedServer/
 ├── static/               # Web content
 │   ├── index.html        # Landing page
 │   ├── hello.html        # Demo page
-│   ├── time.html         # Time page template
-│   ├── 404.html          # Error page template
 │   ├── css/style.css     # Styles
 │   └── js/script.js      # Client-side code
 └── CMakeLists.txt        # Build configuration
