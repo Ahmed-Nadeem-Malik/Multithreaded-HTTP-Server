@@ -28,11 +28,6 @@ project(MultithreadedServer
         DESCRIPTION "High-performance multithreaded HTTP server"
         LANGUAGES CXX)
 
-# C++ Standard Configuration
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
-
 # Generate compile_commands.json for LSP support (clangd, etc.)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
@@ -64,22 +59,12 @@ set(SOURCES
     src/globals.cpp     # Global state variables
 )
 
-# Header files - API declarations (included for IDE support)
-set(HEADERS
-    include/config.h      # Server configuration constants
-    include/http.h        # HTTP utilities and request handling
-    include/routing.h     # Route registration and mapping
-    include/threadpool.h  # Thread pool class definition
-    include/server.h      # Server socket functions
-    include/globals.h     # Global variable declarations
-)
-
 # ==============================================================================
 # Target Configuration
 # ==============================================================================
 
 # Create the main executable
-add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
+add_executable(${PROJECT_NAME} ${SOURCES})
 
 # Set include directories for LSP and IDE support
 target_include_directories(${PROJECT_NAME} PRIVATE 
