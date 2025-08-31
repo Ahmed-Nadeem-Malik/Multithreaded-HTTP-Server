@@ -33,6 +33,9 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+# Generate compile_commands.json for LSP support (clangd, etc.)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 # ==============================================================================
 # Compiler Configuration
 # ==============================================================================
@@ -77,6 +80,11 @@ set(HEADERS
 
 # Create the main executable
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
+
+# Set include directories for LSP and IDE support
+target_include_directories(${PROJECT_NAME} PRIVATE 
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
 
 # Ensure C++11 standard compliance
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_11)

@@ -10,6 +10,9 @@ cmake_install.cmake
 Makefile
 *.cmake
 
+# LSP support files (excluded - generated locally)
+compile_commands.json
+
 # Compiled executables
 MultithreadedServer
 MultithreadedServer.exe
@@ -49,4 +52,4 @@ Desktop.ini
 *.temp
 
 # Core dumps
-core
+core.cache/
