@@ -112,7 +112,7 @@ This structure separates interface definitions (headers) from implementation (so
 - **CMake 3.16 or higher**
 - **Operating System**: Linux, macOS, or Windows
 
-### Quick Start
+### Quick Start(BUILT ON MACOS OTHER METHODS NOT TESTED)
 ```bash
 git clone https://github.com/Ahmed-Nadeem-Malik/Multithreaded-HTTP-Server.git
 cd Multithreaded-HTTP-Server
