@@ -1,4 +1,4 @@
-# MultithreadedServer
+# Multithreaded HTTP Server
 
 A high-performance HTTP server built from scratch in C++ with multithreading support. This project demonstrates systems programming concepts, concurrent design patterns, and network programming.
 
