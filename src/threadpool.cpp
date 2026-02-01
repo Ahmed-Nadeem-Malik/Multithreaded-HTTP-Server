@@ -31,7 +31,6 @@ void ThreadPool::worker()
         handle_client(client_fd);
     }
 }
-
 ThreadPool::ThreadPool(int num_threads)
 {
     // Create and start worker threads

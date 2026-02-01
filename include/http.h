@@ -15,6 +15,14 @@
 std::string read_file_content(const std::string& file_path);
 
 /**
+ * Reads entire file contents into a string
+ * @param file_path Path to the file to read
+ * @param out_content Destination string for file contents
+ * @return True on success, false if file cannot be read
+ */
+bool read_file_content(const std::string& file_path, std::string& out_content);
+
+/**
  * Creates complete HTTP/1.1 response with headers
  * @param status HTTP status line (e.g., "200 OK", "404 Not Found")
  * @param content_type MIME type for Content-Type header
@@ -23,6 +31,12 @@ std::string read_file_content(const std::string& file_path);
  */
 std::string create_http_response(const std::string& status, const std::string& content_type,
                                  const std::string& content);
+
+/**
+ * Sets whether the current response should keep the connection alive
+ * @param keep_alive True to include Connection: keep-alive, false for Connection: close
+ */
+void set_keep_alive(bool keep_alive);
 
 /**
  * Creates HTTP response with file content

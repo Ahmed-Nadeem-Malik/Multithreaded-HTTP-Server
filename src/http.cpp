@@ -13,30 +13,67 @@
 #include "../include/globals.h"
 #include "../include/routing.h"
 
+bool read_file_content(const std::string& file_path, std::string& out_content)
+{
+    std::ifstream file(file_path, std::ios::binary);
+    if (!file.is_open())
+    {
+        out_content.clear();
+        return false;
+    }
+
+    file.seekg(0, std::ios::end);
+    std::streamoff size = file.tellg();
+    if (size < 0)
+    {
+        out_content.clear();
+        return false;
+    }
+
+    out_content.assign(static_cast<size_t>(size), '\0');
+    file.seekg(0, std::ios::beg);
+    if (size > 0)
+    {
+        file.read(&out_content[0], static_cast<std::streamsize>(size));
+        if (!file)
+        {
+            out_content.clear();
+            return false;
+        }
+    }
+
+    return true;
+}
+
 std::string read_file_content(const std::string& file_path)
 {
-    std::ifstream file(file_path);
-    if (!file.is_open())
+    std::string content;
+    if (!read_file_content(file_path, content))
     {
         return "";
     }
-
-    std::ostringstream buffer;
-    buffer << file.rdbuf();
-    return buffer.str();
+    return content;
 }
+
+namespace
+{
+thread_local bool current_keep_alive = false;
+}
+
+void set_keep_alive(bool keep_alive) { current_keep_alive = keep_alive; }
 
 std::string create_http_response(const std::string& status, const std::string& content_type, const std::string& content)
 {
+    const char* connection_value = current_keep_alive ? "keep-alive" : "close";
     return "HTTP/1.1 " + status + "\r\nContent-Length: " + std::to_string(content.size()) +
-           "\r\nServer: " + std::string(Config::SERVER_NAME) + "\r\nContent-Type: " + content_type + "\r\n\r\n" +
-           content;
+           "\r\nServer: " + std::string(Config::SERVER_NAME) + "\r\nContent-Type: " + content_type +
+           "\r\nConnection: " + connection_value + "\r\n\r\n" + content;
 }
 
 std::string create_file_response(const std::string& file_path, const std::string& content_type)
 {
-    std::string content = read_file_content(file_path);
-    if (content.empty())
+    std::string content;
+    if (!read_file_content(file_path, content))
     {
         return create_http_response("404 Not Found", "text/html", "File not Found");
     }

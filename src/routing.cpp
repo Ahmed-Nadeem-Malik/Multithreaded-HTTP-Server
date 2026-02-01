@@ -16,15 +16,20 @@ static RouteMap ROUTES;
 
 RouteMap& get_routes() { return ROUTES; }
 
-void add_route(const std::string& path, const std::string& method, Handler h) 
-{ 
-    ROUTES[path][method] = std::move(h); 
-}
+void add_route(const std::string& path, const std::string& method, Handler h) { ROUTES[path][method] = std::move(h); }
 
 Handler static_file(const std::string& file_path, const std::string& content_type)
 {
-    // Return a lambda that serves the static file with specified content type
-    return [file_path, content_type](const std::string&) { return create_file_response(file_path, content_type); };
+    std::string content;
+    bool ok = read_file_content(file_path, content);
+    return [content_type, content, ok](const std::string&)
+    {
+        if (!ok)
+        {
+            return create_http_response("404 Not Found", "text/html", "File not Found");
+        }
+        return create_http_response("200 OK", content_type, content);
+    };
 }
 
 void init_routes()
@@ -57,7 +62,7 @@ void init_routes()
                   return create_http_response("200 OK", "text/plain", os.str());
               });
 
-    // Echo endpoint - matches Handler signature: std::string(const std::string& body)  
+    // Echo endpoint - matches Handler signature: std::string(const std::string& body)
     add_route("/echo", "POST", [](const std::string& body)  // uses body parameter
               { return create_http_response("200 OK", "text/plain", "You posted:\n" + body); });
 }
