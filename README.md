@@ -39,6 +39,7 @@ Transfer/sec:    229.99MB
 - **Thread pool implementation** - Efficient concurrent request handling
 - **Dynamic routing system** - Easy to add new endpoints
 - **Complete HTTP/1.1 support** - Proper request parsing with Content-Length handling
+- **Keep-alive connections** - Multi-request sessions per TCP connection
 - **Robust request handling** - Multi-packet request assembly for reliable GET/POST support
 - **Built-in metrics** - Real-time performance monitoring
 - **Thread-safe operations** - Atomic counters and mutex-protected logging
@@ -249,6 +250,7 @@ Building this server taught me about:
 
 - **Minimal external dependencies** - Built with standard C++ and POSIX APIs only
 - **Robust HTTP handling** - Proper multi-packet request assembly and Content-Length parsing
+- **Keep-alive support** - Connection reuse for higher throughput under load
 - **Memory efficient** - 2KB buffer allocation with proper cleanup and boundary handling
 - **Production patterns** - Thread pool, comprehensive error handling, graceful shutdown
 - **Extensible design** - Easy to add new routes and features through lambda-based handlers
